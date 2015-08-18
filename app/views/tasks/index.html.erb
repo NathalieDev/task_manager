@@ -1,0 +1,13 @@
+<h1>Todo List</h1>
+
+<table>
+  <% @tasks.each do |task| %>
+    <tr>
+      <td><%= task.name %></td>
+      <td><i class="fa fa-<%= task.done == true ? "check-" : "" %>square"></i></td>
+      <td><%= link_to "detail", task_path(task) %></td>
+    </tr>
+  <% end %>
+</table>
+
+
