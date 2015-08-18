@@ -4,12 +4,16 @@ class TasksController < ApplicationController
   end
 
   def create
+    Task.create(task_params)
+    redirect_to tasks_path
   end
 
   def new
+    @task = Task.new
   end
 
   def edit
+     @task = Task.find(params[:id])
   end
 
   def show
@@ -21,4 +25,13 @@ class TasksController < ApplicationController
 
   def destroy
   end
+
+private
+
+  def task_params
+    params.require(:task).permit(:name, :done)
+  end
+
 end
+
+
